@@ -1,5 +1,16 @@
-function Tile(){
-    return <h2>This is a tile</h2>
+import { useState } from "react";
+import { Status, TileProps } from "./models";
+
+function Tile({status, setTileStatus, firstPlayerTurn, setFirstPlayerTurn}: TileProps){
+
+    const tileOnClick = () => {
+        if(status === Status.BLANK){
+            setTileStatus(firstPlayerTurn ? Status.CROSS : Status.CIRCLE);
+            setFirstPlayerTurn(!firstPlayerTurn)
+        }
+    };
+
+    return <button onClick={tileOnClick}>{status}</button>;
 };
 
 export default Tile;
