@@ -10,7 +10,11 @@ function Tile({status, setTileStatus, firstPlayerTurn, setFirstPlayerTurn}: Tile
         }
     };
 
-    return <button onClick={tileOnClick}>{status}</button>;
+    return <div className="tile-div" onClick={tileOnClick}>
+        {status === Status.BLANK && <img src="path/to/option2-image.jpg" alt=" " />}
+        {status === Status.CROSS && <img src="../assets/cross.png" alt="X" />}
+        {status === Status.CIRCLE && <img src="../assets/circle.png" alt="O" />}
+    </div>;
 };
 
 export default Tile;
