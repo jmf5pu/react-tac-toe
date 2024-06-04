@@ -1,19 +1,20 @@
-import { useState } from "react";
 import { Status, TileProps } from "./models";
 
-function Tile({status, setTileStatus, firstPlayerTurn, setFirstPlayerTurn}: TileProps){
-
+function Tile({id, statuses, setTileStatuses, firstPlayerTurn, setFirstPlayerTurn}: TileProps){
     const tileOnClick = () => {
-        if(status === Status.BLANK){
-            setTileStatus(firstPlayerTurn ? Status.CROSS : Status.CIRCLE);
+        if(statuses[id] === Status.BLANK){
+            let newStatus: Status = firstPlayerTurn ? Status.CROSS : Status.CIRCLE;
+            const updatedStatuses = [...statuses];
+            updatedStatuses[id] = newStatus;
+            setTileStatuses(updatedStatuses);
             setFirstPlayerTurn(!firstPlayerTurn)
         }
     };
 
     return <div className="tile-div" onClick={tileOnClick}>
-        {status === Status.BLANK && <img src="path/to/option2-image.jpg" alt=" " />}
-        {status === Status.CROSS && <img src="../assets/cross.png" alt="X" />}
-        {status === Status.CIRCLE && <img src="../assets/circle.png" alt="O" />}
+        {statuses[id] === Status.BLANK && <img src="path/to/option2-image.jpg" alt=" " />}
+        {statuses[id] === Status.CROSS && <img src="../assets/cross.png" alt="X" />}
+        {statuses[id] === Status.CIRCLE && <img src="../assets/circle.png" alt="O" />}
     </div>;
 };
 

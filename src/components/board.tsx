@@ -7,35 +7,27 @@ import "../global.css";
 
 function Board(){
     const [firstPlayerTurn, setFirstPlayerTurn] = useState(true);
-    const [tileOneStatus, setTileOneStatus] = useState(Status.BLANK);
-    const [tileTwoStatus, setTileTwoStatus] = useState(Status.BLANK);
-    const [tileThreeStatus, setTileThreeStatus] = useState(Status.BLANK);
-    const [tileFourStatus, setTileFourStatus] = useState(Status.BLANK);
-    const [tileFiveStatus, setTileFiveStatus] = useState(Status.BLANK);
-    const [tileSixStatus, setTileSixStatus] = useState(Status.BLANK);
-    const [tileSevenStatus, setTileSevenStatus] = useState(Status.BLANK);
-    const [tileEightStatus, setTileEightStatus] = useState(Status.BLANK);
-    const [tileNineStatus, setTileNineStatus] = useState(Status.BLANK);    
+    const [tileStatuses, setTileStatuses] = useState(Array(9).fill(Status.BLANK));  
 
     const gameWon = (checkingFirstPlayer: boolean) : boolean => {
         let gameWon: boolean = false;
         let targetStatus: Status = checkingFirstPlayer ? Status.CROSS : Status.CIRCLE;
 
-        if([tileOneStatus, tileTwoStatus, tileThreeStatus].every(status => status === targetStatus)) // check rows
+        if([tileStatuses[0], tileStatuses[1], tileStatuses[2]].every(status => status === targetStatus)) // check rows
             gameWon = true;
-        else if([tileFourStatus, tileFiveStatus, tileSixStatus].every(status => status === targetStatus))
+        else if([tileStatuses[3], tileStatuses[4], tileStatuses[5]].every(status => status === targetStatus))
             gameWon = true;
-        else if([tileSevenStatus, tileEightStatus, tileNineStatus].every(status => status === targetStatus))
+        else if([tileStatuses[6], tileStatuses[7], tileStatuses[8]].every(status => status === targetStatus))
             gameWon = true;
-        else if([tileOneStatus, tileFourStatus, tileSevenStatus].every(status => status === targetStatus)) // check cols
+        else if([tileStatuses[0], tileStatuses[3], tileStatuses[6]].every(status => status === targetStatus)) // check cols
             gameWon = true;
-        else if([tileTwoStatus, tileFiveStatus, tileEightStatus].every(status => status === targetStatus))
+        else if([tileStatuses[1], tileStatuses[4], tileStatuses[7]].every(status => status === targetStatus))
             gameWon = true;
-        else if([tileThreeStatus, tileSixStatus, tileNineStatus].every(status => status === targetStatus))
+        else if([tileStatuses[2], tileStatuses[5], tileStatuses[8]].every(status => status === targetStatus))
             gameWon = true;
-        else if([tileOneStatus, tileFiveStatus, tileNineStatus].every(status => status === targetStatus)) // check diagonals
+        else if([tileStatuses[0], tileStatuses[4], tileStatuses[8]].every(status => status === targetStatus)) // check diagonals
             gameWon = true;
-        else if([tileThreeStatus, tileFiveStatus, tileSevenStatus].every(status => status === targetStatus))
+        else if([tileStatuses[2], tileStatuses[4], tileStatuses[6]].every(status => status === targetStatus))
             gameWon = true;
 
         return gameWon;
@@ -43,15 +35,15 @@ function Board(){
 
     const boardFull = () : boolean => {
         return (
-            tileOneStatus !== Status.BLANK && 
-            tileTwoStatus !== Status.BLANK && 
-            tileThreeStatus !== Status.BLANK &&
-            tileFourStatus !== Status.BLANK &&
-            tileFiveStatus !== Status.BLANK &&
-            tileSixStatus !== Status.BLANK &&
-            tileSevenStatus !== Status.BLANK &&
-            tileEightStatus !== Status.BLANK &&
-            tileNineStatus !== Status.BLANK
+            tileStatuses[0] !== Status.BLANK && 
+            tileStatuses[1] !== Status.BLANK && 
+            tileStatuses[2] !== Status.BLANK &&
+            tileStatuses[3] !== Status.BLANK &&
+            tileStatuses[4] !== Status.BLANK &&
+            tileStatuses[5] !== Status.BLANK &&
+            tileStatuses[6] !== Status.BLANK &&
+            tileStatuses[7] !== Status.BLANK &&
+            tileStatuses[8] !== Status.BLANK
         );
     }
 
@@ -61,30 +53,24 @@ function Board(){
 
     useEffect(() => {
         if(gameComplete()){
-            alert("game over");
-            setFirstPlayerTurn(true);
-            setTileOneStatus(Status.BLANK);
-            setTileTwoStatus(Status.BLANK);
-            setTileThreeStatus(Status.BLANK);
-            setTileFourStatus(Status.BLANK);
-            setTileFiveStatus(Status.BLANK);
-            setTileSixStatus(Status.BLANK);
-            setTileSevenStatus(Status.BLANK);
-            setTileEightStatus(Status.BLANK);
-            setTileNineStatus(Status.BLANK);
+            (async () => {
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                alert("game over");
+                setTileStatuses(Array(9).fill(Status.BLANK));
+            })();
         }
     });
 
     return <div className="board-grid-div">
-        <Tile status={tileOneStatus} setTileStatus={setTileOneStatus} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
-        <Tile status={tileTwoStatus} setTileStatus={setTileTwoStatus} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
-        <Tile status={tileThreeStatus} setTileStatus={setTileThreeStatus} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
-        <Tile status={tileFourStatus} setTileStatus={setTileFourStatus} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
-        <Tile status={tileFiveStatus} setTileStatus={setTileFiveStatus} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
-        <Tile status={tileSixStatus} setTileStatus={setTileSixStatus} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
-        <Tile status={tileSevenStatus} setTileStatus={setTileSevenStatus} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
-        <Tile status={tileEightStatus} setTileStatus={setTileEightStatus} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
-        <Tile status={tileNineStatus} setTileStatus={setTileNineStatus} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
+        <Tile id={0} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
+        <Tile id={1} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
+        <Tile id={2} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
+        <Tile id={3} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
+        <Tile id={4} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
+        <Tile id={5} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
+        <Tile id={6} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
+        <Tile id={7} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
+        <Tile id={8} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
     </div>;
 };
 

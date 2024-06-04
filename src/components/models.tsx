@@ -5,8 +5,9 @@ export enum Status{
 };
 
 export interface TileProps{
-    status: Status,
-    setTileStatus: React.Dispatch<React.SetStateAction<Status>>
+    id: number,
+    statuses: Status[],
+    setTileStatuses: React.Dispatch<React.SetStateAction<Status[]>>,
     firstPlayerTurn: boolean,
-    setFirstPlayerTurn: React.Dispatch<React.SetStateAction<boolean>>,
+    setFirstPlayerTurn: React.Dispatch<React.SetStateAction<boolean>>
 };
