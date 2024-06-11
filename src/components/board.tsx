@@ -62,15 +62,15 @@ function Board(){
     });
 
     return <div className="board-grid-div">
-        <Tile id={0} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
-        <Tile id={1} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
-        <Tile id={2} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
-        <Tile id={3} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
-        <Tile id={4} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
-        <Tile id={5} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
-        <Tile id={6} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
-        <Tile id={7} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
-        <Tile id={8} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/>
+        <div><Tile id={0} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
+        <div><Tile id={1} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
+        <div><Tile id={2} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
+        <div><Tile id={3} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
+        <div><Tile id={4} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
+        <div><Tile id={5} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
+        <div><Tile id={6} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
+        <div><Tile id={7} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
+        <div><Tile id={8} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
     </div>;
 };
 

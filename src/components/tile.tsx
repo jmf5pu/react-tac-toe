@@ -12,9 +12,8 @@ function Tile({id, statuses, setTileStatuses, firstPlayerTurn, setFirstPlayerTur
     };
 
     return <div className="tile-div" onClick={tileOnClick}>
-        {statuses[id] === Status.BLANK && <img src="path/to/option2-image.jpg" alt=" " />}
-        {statuses[id] === Status.CROSS && <img src="../assets/cross.png" alt="X" />}
-        {statuses[id] === Status.CIRCLE && <img src="../assets/circle.png" alt="O" />}
+        {statuses[id] === Status.CROSS && <img src="/assets/cross.png" alt="X" />}
+        {statuses[id] === Status.CIRCLE && <img src="/assets/circle.png" alt="O" />}
     </div>;
 };
 
