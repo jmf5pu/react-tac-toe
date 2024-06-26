@@ -4,12 +4,34 @@ body {
     justify-content: center;
 }
 
-.board-grid-div{
-    display: grid;
-    grid: 1fr 1fr 1fr / 1fr 1fr 1fr;
+
+.board-flex-parent-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 500px;
     height: 500px;
-    text-align: left;
+    position: relative;
+}
+
+.board-tile-grid-div{
+    display: grid;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    align-items: center;
+    justify-items: center;
+    outline: 2px solid purple;
+}
+
+.board-spacer-div{
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    align-items: center;
+    justify-items: center;
+    outline: 2px solid green;
 }
 
 .board-grid-div > div{
@@ -23,6 +45,6 @@ body {
     align-items: center;
     justify-content: center;
     outline: 2px solid red;
-    height: 60px;
     width: 60px;
+    height: 60px;
 }

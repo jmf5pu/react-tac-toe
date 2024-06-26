@@ -61,16 +61,33 @@ function Board(){
         }
     });
 
-    return <div className="board-grid-div">
-        <div><Tile id={0} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
-        <div><Tile id={1} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
-        <div><Tile id={2} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
-        <div><Tile id={3} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
-        <div><Tile id={4} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
-        <div><Tile id={5} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
-        <div><Tile id={6} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
-        <div><Tile id={7} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
-        <div><Tile id={8} statuses={tileStatuses} setTileStatuses={setTileStatuses} firstPlayerTurn={firstPlayerTurn} setFirstPlayerTurn={setFirstPlayerTurn}/></div>
+    const renderTile = (id: number) => (
+        <div>
+            <Tile
+                key={id}
+                id={id}
+                statuses={tileStatuses}
+                setTileStatuses={setTileStatuses}
+                firstPlayerTurn={firstPlayerTurn}
+                setFirstPlayerTurn={setFirstPlayerTurn}
+            />
+        </div>
+    );
+
+    let tileIndices: number[] = Array.from({ length: 9 }, (_, i) => i);
+ 
+    return <div className="board-flex-parent-div">
+        <div className="board-spacer-div">
+        </div>
+        <div className="board-tile-grid-div">
+            {
+                tileIndices.map(
+                    (index) => (
+                        renderTile(index)
+                    )
+                )
+            }
+        </div>
     </div>;
 };
 
