@@ -78,6 +78,7 @@ function Board(){
  
     return <div className="board-flex-parent-div">
         <div className="board-spacer-div">
+            <img src="/assets/board.png"/>
         </div>
         <div className="board-tile-grid-div">
             {
