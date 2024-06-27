@@ -1,13 +1,13 @@
-
 import { useEffect, useState } from "react";
 import Tile from "./tile";
-import { Status } from "./models";
+import { Status, BoardProps } from "./models";
 import "../global.css";
 
 
-function Board(){
+function Board({ setShowModal }: BoardProps){
     const [firstPlayerTurn, setFirstPlayerTurn] = useState(true);
-    const [tileStatuses, setTileStatuses] = useState(Array(9).fill(Status.BLANK));  
+    const [tileStatuses, setTileStatuses] = useState(Array(9).fill(Status.BLANK));
+    const [gameOver, setGameOver] = useState(false);
 
     const gameWon = (checkingFirstPlayer: boolean) : boolean => {
         let gameWon: boolean = false;
@@ -52,11 +52,13 @@ function Board(){
     };
 
     useEffect(() => {
-        if(gameComplete()){
+        if(gameComplete() && !gameOver){
+            setGameOver(true);
             (async () => {
                 await new Promise(resolve => setTimeout(resolve, 1000));
-                alert("game over");
+                setShowModal(true);
                 setTileStatuses(Array(9).fill(Status.BLANK));
+                setGameOver(false);
             })();
         }
     });

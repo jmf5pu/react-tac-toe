@@ -1,0 +1,4 @@
+* block user input after game is completed
+* add modal for end of game
+* add logic to determine who won when game is completed
+* set tab icon and title

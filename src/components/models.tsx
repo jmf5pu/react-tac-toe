@@ -11,3 +11,12 @@ export interface TileProps{
     firstPlayerTurn: boolean,
     setFirstPlayerTurn: React.Dispatch<React.SetStateAction<boolean>>
 };
+
+export interface ModalProps{
+    showModal: boolean,
+    setShowModal: React.Dispatch<React.SetStateAction<boolean>>
+};
+
+export interface BoardProps{
+    setShowModal: React.Dispatch<React.SetStateAction<boolean>>
+};
